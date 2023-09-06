@@ -8,4 +8,4 @@ const solution = (a, b, c) => {
   return sortArr[0] + sortArr[1] > sortArr[2] ? "YES" : "NO";
 };
 
-console.log(solution(13, 33, 17));
+console.log(solution(13, 33, 17)); // NO
