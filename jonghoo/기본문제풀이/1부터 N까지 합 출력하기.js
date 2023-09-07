@@ -6,3 +6,14 @@ function solution(number) {
 
 solution(6);
 solution(10);
+
+function solution1(n) {
+  let answer = 0;
+  for (let i = 1; i <= n; i++) {
+    answer = answer + i;
+  }
+
+  return answer;
+}
+
+console.log(solution1(10));
