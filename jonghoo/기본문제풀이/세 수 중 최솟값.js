@@ -6,3 +6,15 @@ function solution(a, b, c) {
 }
 
 solution(6, 5, 11);
+
+//정답문제
+
+function solution1(a, b, c) {
+  let answer;
+  if (a < b) answer = a;
+  else answer = b;
+  if (c < answer) answer = c;
+  return answer;
+}
+
+console.log(solution1(2, 5, 1));
