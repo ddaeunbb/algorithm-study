@@ -20,7 +20,7 @@ function solution(arr){
 // 답안
 // function solution(arr){
 //   let answer=[];
-//   let sum=0, min=1000;
+//   let sum=0, min=Number.;
 //   for(let x of arr){
 //       if(x%2===1){
 //           sum+=x;
