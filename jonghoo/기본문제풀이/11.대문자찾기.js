@@ -12,3 +12,8 @@ function solution(string) {
 }
 
 solution("KoreaTimeGood");
+
+//아스키 코드넘버 범위
+//대문자는 65~90 사이에속함.
+//소문자는 97~122까지
+// x.charCodeAt();

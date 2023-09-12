@@ -10,9 +10,12 @@ function solution(string) {
       } else {
         result += x;
       }
+      // result=result.replace(/A/g, "#");
     }
+  } else {
+    console.log("대문자가아닙니다.");
   }
   console.log(result);
 }
 
-solution("BANANA");
+solution("BaNANA");
