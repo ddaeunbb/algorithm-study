@@ -15,3 +15,5 @@ function solution(string, s) {
 }
 
 solution("COMPUTERPROGRAMMING", "R");
+
+//프로그래밍에서 대문자 소문자는 다르게 취급.

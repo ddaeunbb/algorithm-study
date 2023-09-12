@@ -6,36 +6,70 @@
 // 아홉 난쟁이의 키가 주어졌을 때, 백설공주를 도와 일곱 난쟁이를 찾는 프로그램을 작성하시
 // 오.
 
-function solution(arr, n, targetSum) {
-  let answer = [];
+//백트래킹.(돌아간다는) N퀸문제.
 
-  function findCombinations(startIndex, currentCombination, currentSum) {
-    if (currentSum === targetSum && currentCombination.length === n) {
-      answer.push(currentCombination.slice());
+function solution(arr) {
+  const targetSum = 100;
+  const selected = [];
+
+  function backtrack(currentIdx, currentSum) {
+    if (selected.length === 7) {
+      if (currentSum === targetSum) {
+        console.log(selected.join(" "));
+      }
       return;
     }
 
-    if (currentSum > targetSum || currentCombination.length > n) {
+    if (currentIdx >= arr.length) {
       return;
     }
 
-    for (let i = startIndex; i < arr.length; i++) {
-      currentCombination.push(arr[i]);
-      findCombinations(i + 1, currentCombination, currentSum + arr[i]);
-      currentCombination.pop();
-    }
+    selected.push(arr[currentIdx]);
+    backtrack(currentIdx + 1, currentSum + arr[currentIdx]);
+    selected.pop();
+
+    backtrack(currentIdx + 1, currentSum);
   }
 
-  findCombinations(0, [], 0);
+  backtrack(0, 0);
+}
+
+solution([22, 7, 21, 19, 10, 15, 25, 8, 13]);
+
+///
+
+function solution1(arr) {
+  let answer = arr;
+  let sum = answer.reduce((a, b) => a + b, 0);
+  let flag = false;
+  for (let i = 0; i < 8; i++) {
+    for (let j = i + 1; j < 9; j++) {
+      if (sum - (answer[i] + answer[j]) == 100) {
+        answer.splice(j, 1);
+        answer.splice(i, 1);
+        flag = true;
+        break;
+      }
+    }
+    if (flag == true) break;
+  }
   return answer;
 }
 
-const numbers = [10, 20, 30, 40, 50, 60, 70, 80, 90];
-const n = 7;
-const targetSum = 100;
-const combinations = solution(numbers, n, targetSum);
+let arr = [22, 7, 21, 19, 10, 15, 25, 8, 13];
+console.log(solution1(arr));
 
-console.log("7개의 숫자로 100을 만들 수 있는 경우의 수:");
-combinations.forEach((combination) => {
-  console.log(combination);
-});
+const solution2 = (arr) => {
+  let sumOfArr = arr.reduce((acc, cur) => (acc += cur));
+  let exceptNum = sumOfArr - 100;
+
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 1; j < arr.length; j++) {
+      if (arr[i] + arr[j] === exceptNum) {
+        return arr.filter((num) => num !== arr[i] && num !== arr[j]);
+      }
+    }
+  }
+};
+
+console.log(solution2([22, 7, 21, 19, 10, 15, 25, 8, 13])); // 20 7 23 19 10 8 13

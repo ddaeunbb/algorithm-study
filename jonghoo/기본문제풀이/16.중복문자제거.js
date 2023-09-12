@@ -13,3 +13,15 @@ function solution(string) {
 }
 
 solution("ksekkset");
+
+//indexOf 메서드의 특성
+
+function solution1(s) {
+  let answer = "";
+  for (let i = 0; i < s.length; i++) {
+    if (s.indexOf(s[i]) === i) answer += s[i];
+  }
+  return answer;
+}
+
+console.log(solution1("ksekkset"));

@@ -2,14 +2,16 @@
 // 프로그램을 작성하세요.
 
 function solution(arr) {
-  let answer = [];
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = 0; j < arr.length; j++) {
-      console.log(i, j);
+  let n = arr.length;
+  let answer = Array.from({ length: n }, () => 1);
+  console.log(answer);
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
+      if (arr[j] > arr[i]) answer[i]++;
     }
   }
+  return answer;
 }
 
-solution([87, 89, 92, 100, 76]);
-
-//점수를 구해야하는게 문제인데.. 아무래도
+let arr = [87, 89, 92, 100, 76];
+console.log(solution(arr));

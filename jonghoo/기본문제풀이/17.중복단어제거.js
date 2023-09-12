@@ -11,3 +11,21 @@ function solution(number, arr) {
 }
 
 solution(5, ["good", "time", "good", "time", "student"]);
+
+// Set 자료구조활용
+
+const foo = new Set(["good", "time", "good", "time", "student"]);
+console.log(Array.from(foo));
+
+//문제풀이
+
+function solution1(s) {
+  let answer;
+  answer = s.filter(function (v, i) {
+    if (s.indexOf(v) === i) return true;
+  });
+
+  return answer;
+}
+
+console.log(solution1(["good", "time", "good", "time", "student"]));
