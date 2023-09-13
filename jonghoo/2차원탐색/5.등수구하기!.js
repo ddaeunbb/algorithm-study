@@ -15,3 +15,13 @@ function solution(arr) {
 
 let arr = [87, 89, 92, 100, 76];
 console.log(solution(arr));
+
+// function solution1(arr) {
+//   arr.sort(function (a, b) {
+//     return a - b;
+//   });
+
+// }
+
+// let arr1 = [87, 89, 92, 100, 76];
+// console.log(solution1(arr1));
