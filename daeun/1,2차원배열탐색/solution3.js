@@ -3,6 +3,7 @@
 // 예를 들어 N=5이면 두 사람의 각 회의 가위, 바위, 보 정보가 주어지면 각 회를 누가 이겼는지 출력하는 프로그램 을 작성하세요.
 
 // 내가 푼 답안
+// [2,3,3,1,3],[1,1,2,2,3]
 function solution(a,b){
   const answer = [];
   let length = a.length;
@@ -28,7 +29,6 @@ function solution(a,b){
 //       else if(a[i]===3 && b[i]===2) answer+="A ";
 //       else answer+="B ";
 //   }
-  
 //   return answer;
 // }
 
