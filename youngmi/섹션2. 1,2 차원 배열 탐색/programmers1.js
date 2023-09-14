@@ -19,6 +19,7 @@ const solution = (array, commands) => {
   let answer = [];
 
   commands.forEach(([i, j, k]) => {
+    // 문제에서의 ~번째 부터라는 게 인덱스가 1로 시작한다고 가정한 경우임. 따라서 i-1 해줌
     let cutArr = array.slice(i - 1, j);
     cutArr.sort((a, b) => a - b);
     answer.push(cutArr[k - 1]);
