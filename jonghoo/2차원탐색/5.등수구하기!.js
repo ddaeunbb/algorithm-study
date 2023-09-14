@@ -4,7 +4,6 @@
 function solution(arr) {
   let n = arr.length;
   let answer = Array.from({ length: n }, () => 1);
-  console.log(answer);
   for (let i = 0; i < n; i++) {
     for (let j = 0; j < n; j++) {
       if (arr[j] > arr[i]) answer[i]++;
@@ -16,12 +15,4 @@ function solution(arr) {
 let arr = [87, 89, 92, 100, 76];
 console.log(solution(arr));
 
-// function solution1(arr) {
-//   arr.sort(function (a, b) {
-//     return a - b;
-//   });
-
-// }
-
-// let arr1 = [87, 89, 92, 100, 76];
-// console.log(solution1(arr1));
+/// 병합정렬을 통한풀이
