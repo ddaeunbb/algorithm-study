@@ -5,7 +5,7 @@ function solution(array, commands) {
     arr.sort(function (a, b) {
       return a - b;
     });
-    console.log(arr);
+
     answer.push(arr[commands[i][2] - 1]);
   }
 

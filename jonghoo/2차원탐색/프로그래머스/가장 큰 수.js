@@ -1,21 +1,7 @@
-// function solution(arr) {
-//   let string = arr.join("");
-//   let answer = [];
-//   for (x of string) {
-//     answer.push(x);
-//   }
-//   return Number(
-//     answer
-//       .sort(function (a, b) {
-//         return b - a;
-//       })
-//       .join("")
-//   );
-// }
-
-// console.log(solution([6, 10, 2]));
-
 function solution(arr) {
+  if (arr.reduce((a, b) => a + b) === 0) {
+    return "0";
+  }
   arr.sort(function (a, b) {
     let strA = a.toString();
     let strB = b.toString();
