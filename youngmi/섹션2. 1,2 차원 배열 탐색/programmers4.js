@@ -8,4 +8,24 @@
 과학자가 발표한 논문의 수는 1편 이상 1,000편 이하입니다.
 논문별 인용 횟수는 0회 이상 10,000회 이하입니다.*/
 
-const solution = (citations) => {};
+const solution = (citations) => {
+  // 발표한 총 논문 수 n
+  // n편 중 h번 이상 인용된 논문이 h편 이상이고
+  // 나머지 논문이 h번 이하 인용되었다면 h의 최댓값이 H-index
+
+  let sortArr = citations.sort((a, b) => b - a);
+  let answer = 0;
+
+  for (let i = 0; i < sortArr.length; i++) {
+    // 내림차 순으로 정렬후, 인덱스 번호보다 작아지는 순간 count 할 수 없는 논문이므로 break.
+    if (sortArr[i] < i + 1) {
+      break;
+    } else {
+      answer++;
+    }
+  }
+
+  return answer;
+};
+
+console.log(solution([3, 0, 6, 1, 5])); // 3
