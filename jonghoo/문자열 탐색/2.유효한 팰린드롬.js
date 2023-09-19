@@ -30,4 +30,9 @@ function solution1(string) {
   }
 }
 
+// 숫자랑 문자를 없애야되잖아
+
+//없거든요?
+
 console.log(solution1("found7, time: study; Yduts; emit, 7DnuoF"));
+console.log("7".toLowerCase());
