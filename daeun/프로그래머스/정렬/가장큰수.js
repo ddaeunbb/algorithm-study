@@ -1,8 +1,10 @@
 // 가장 큰 수
 
 // 내가 푼 풀이
+// [9, 1, 610, 30]
+// [9, 93, 610] = 961
 function solution(numbers){
-  let copy = [...numbers].sort();
+  let copy = [...numbers].sort().reverse();
   
 }
 
