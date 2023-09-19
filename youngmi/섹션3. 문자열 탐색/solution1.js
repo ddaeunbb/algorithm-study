@@ -13,10 +13,12 @@ const solution = (s) => {
   const end = s.length / 2;
 
   // 왼쪽 부분, 오른쪽 부분
+  // 굳이 왼쪽 오른쪽 안 나누고 전체를 통째로 비교하면 됨 ....
   let left = upperS.slice(0, start);
   let right = upperS.slice(end);
 
   // 왼쪽 부분과 비교를 위해 오른쪽 부분을 반전 시켜줌
+  // reverse를 쓰자 ....
   let reversedRight = "";
 
   for (let i = right.length - 1; i >= 0; i--) {
