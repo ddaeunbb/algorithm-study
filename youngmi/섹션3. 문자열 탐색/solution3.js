@@ -8,8 +8,10 @@
 
 const solution = (s) => {
   const onlyNumber = s.replace(/[^0-9]/g, "");
-  let answer = "";
 
+  /*
+  let answer = "";
+ 
   // 앞부분 0을 떼는 for문
   for (let i = 0; i < onlyNumber.length; i++) {
     // 0이 아니라 '0'으로 비교해주어야 한다.
@@ -18,8 +20,9 @@ const solution = (s) => {
       break;
     }
   }
+  */
 
-  return answer;
+  return Number(onlyNumber);
 };
 
 console.log(solution("g0en2T0s8eSoft")); // 208
