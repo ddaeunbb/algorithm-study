@@ -19,7 +19,7 @@ const solution = (n, arr) => {
     if (sum >= maxSum) {
       // 만약 자릿수 합이 maxSum보다 크면 maxSum 갱신해주고 answer도 해당 arr[i]로 갱신
       maxSum = sum;
-      answer = arr[i];
+      answer = arr[i] > answer ? arr[i] : answer;
     }
   }
 
