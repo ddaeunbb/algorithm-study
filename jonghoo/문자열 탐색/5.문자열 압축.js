@@ -1,30 +1,13 @@
-function solution(string) {
+function solution1(string) {
   let answer = "";
-  let temp = [];
-  let count = 0;
-  for (let i = 0; i < string.length; i++) {
-    if (!temp.includes(string[i])) {
-      temp.push(string[i]);
-      count++;
-    } else if (temp.includes(string[i])) {
-      count++;
-    }
-  }
-  return temp;
-}
-
-console.log(solution("KKHSSSSSSSE"));
-
-function solution1(s) {
-  let answer = "";
-  let cnt = 1;
-  s = s + " ";
-  for (let i = 0; i < s.length - 1; i++) {
-    if (s[i] === s[i + 1]) cnt++;
+  let temp = 1;
+  string = string + " ";
+  for (let i = 0; i < string.length - 1; i++) {
+    if (string[i] === string[i + 1]) temp++;
     else {
-      answer += s[i];
-      if (cnt > 1) answer += String(cnt);
-      cnt = 1;
+      answer += string[i];
+      if (temp > 1) answer += String(temp);
+      temp = 1;
     }
   }
   return answer;
