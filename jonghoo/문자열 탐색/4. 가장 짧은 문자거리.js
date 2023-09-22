@@ -5,12 +5,15 @@ function solution(string, element) {
       elements.push(i);
     }
   }
+  console.log(elements);
+
   let answer = "";
   for (let i = 0; i < string.length; i++) {
     let indexgap = [];
     for (x of elements) {
       indexgap.push(Math.abs(x - i));
     }
+
     indexgap.sort((a, b) => a - b);
     answer += indexgap[0] += " ";
   }
@@ -19,4 +22,3 @@ function solution(string, element) {
 }
 
 console.log(solution("teachermode", "e"));
-console.log(Math.abs(-1, 1, 2));

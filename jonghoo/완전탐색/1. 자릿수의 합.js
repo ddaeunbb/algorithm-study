@@ -5,7 +5,7 @@ function solution1(arr) {
     let sum = arr[i]
       .toString()
       .split("")
-      .reduce((a, b) => a + Number(b));
+      .reduce((a, b) => a + Number(b), 0);
     if (sum > max) {
       max = sum;
       answer = arr[i];
