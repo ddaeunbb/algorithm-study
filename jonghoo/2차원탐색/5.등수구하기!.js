@@ -16,3 +16,18 @@ let arr = [87, 89, 92, 100, 76];
 console.log(solution(arr));
 
 /// 병합정렬을 통한풀이
+
+function solution1(arr) {
+  let uniqueArray = [...new Set(arr)];
+  let myMap = new Map();
+  uniqueArray.sort((a, b) => b - a);
+  for (let i = 0; i < uniqueArray.length; i++) {
+    myMap.set(uniqueArray[i], i + 1);
+  }
+  answer = "";
+
+  for (x of arr) answer += myMap.get(x) + " ";
+  return answer;
+}
+
+console.log(solution1([87, 89, 92, 100, 76]));
