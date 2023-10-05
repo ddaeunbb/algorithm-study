@@ -8,6 +8,7 @@ function solution(number, test, arr) {
       }
     }
   }
+  console.log(whole);
 
   for (x of whole) {
     let count = 0;
