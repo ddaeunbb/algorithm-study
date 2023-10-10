@@ -29,7 +29,7 @@ function solution(k, dungeons) {
   };
 
   let countarr = [];
-  let arr = getPermutations(index, 3);
+  let arr = getPermutations(index, dungeons.length);
   for (let i = 0; i < arr.length; i++) {
     let tired = k;
     let count = 0;
