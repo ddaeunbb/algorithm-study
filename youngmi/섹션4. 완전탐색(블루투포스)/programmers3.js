@@ -23,16 +23,17 @@ const solution = (numbers) => {
   // 순열 만들기
   const getPermutation = (arr, fixed) => {
     // 재귀 탈출 조건이 arr.length < 1
+    console.log(arr, fixed);
     if (arr.length >= 1) {
       for (let i = 0; i < arr.length; i++) {
         const newNum = fixed + arr[i];
         const copyArr = [...arr];
         copyArr.splice(i, 1);
-
+        console.log(newNum, copyArr);
         if (!answer.includes(+newNum) && isPrimeNum(+newNum)) {
           answer.push(+newNum);
         }
-
+        console.log(answer);
         getPermutation(copyArr, newNum);
       }
     }
@@ -42,4 +43,4 @@ const solution = (numbers) => {
   return answer.length;
 };
 
-console.log(solution("011"));
+console.log(solution("143"));
