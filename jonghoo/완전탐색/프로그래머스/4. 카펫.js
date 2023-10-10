@@ -9,6 +9,7 @@ function solution(brown, yellow) {
     }
     index++;
   }
+
   for (let i = 0; i < divisor.length; i++) {
     for (let j = 0; j < divisor.length; j++) {
       if (divisor[i] * divisor[j] === sum && divisor[i] >= divisor[j]) {
@@ -16,6 +17,7 @@ function solution(brown, yellow) {
       }
     }
   }
+  console.log(answer);
 
   for (let i = 0; i < answer.length; i++) {
     let a = answer[i][0];
@@ -34,6 +36,7 @@ function solution(brown, yellow) {
     }
   }
 }
+
 console.log(solution(10, 2));
 console.log(solution(8, 1));
 console.log(solution(24, 24));

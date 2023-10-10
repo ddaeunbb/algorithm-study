@@ -1,11 +1,12 @@
 function solution(n, wires) {
-  let correct = [];
-  for (let i = 0; i < wires.length; i++) {
-    correct.push(wires[i][0]);
-    correct.push(wires[i][1]);
-  }
-  let arr = new Set(correct).size;
-  return arr;
+  let tree = Array.from(Array(n + 1), () => []);
+  wires.map((element) => {
+    let [a, b] = element;
+
+    tree[a].push(b);
+    tree[b].push(a);
+  });
+  return tree;
 }
 
 console.log(
