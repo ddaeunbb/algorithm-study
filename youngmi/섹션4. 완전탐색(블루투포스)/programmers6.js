@@ -14,7 +14,7 @@ n개의 송전탑이 전선을 통해 하나의 트리 형태로 연결되어 �
 - 1 ≤ v1 < v2 ≤ n 입니다.
 - 전력망 네트워크가 하나의 트리 형태가 아닌 경우는 입력으로 주어지지 않습니다. */
 
-function solution(n, wires) {
+const solution = (n, wires) => {
   var answer = Number.MAX_SAFE_INTEGER;
   // 트리 만들기
   // Array.from()으로 []를 10개 가진 이차원 배열 만들어 줌.
@@ -33,7 +33,7 @@ function solution(n, wires) {
 
   // root노드와 예외 노드
   // root노드부터 시작해서 예외 노드 제외하고는 모두 탐색해서 count값을 리턴
-  function searchTree(root, exceptNum) {
+  const searchTree = (root, exceptNum) => {
     console.log("root노드", root, " 예외 노드", exceptNum);
     let count = 0;
     let visit = [];
@@ -61,7 +61,7 @@ function solution(n, wires) {
     console.log("while문 끝 count는 ", count);
 
     return count;
-  }
+  };
 
   // wires 값에 만든 함수에 값을 넣어 최솟값을 찾음.
   wires.forEach((element) => {
@@ -69,7 +69,7 @@ function solution(n, wires) {
     answer = Math.min(answer, Math.abs(searchTree(a, b) - searchTree(b, a)));
   });
   return answer;
-}
+};
 
 console.log(
   solution(9, [
