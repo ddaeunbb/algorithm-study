@@ -4,6 +4,8 @@ function solution(k, dungeons) {
     index.push(i);
   }
 
+  
+
   const getPermutations = (arr, num) => {
     const results = [];
 
@@ -30,6 +32,7 @@ function solution(k, dungeons) {
 
   let countarr = [];
   let arr = getPermutations(index, dungeons.length);
+  console.log(arr);
   for (let i = 0; i < arr.length; i++) {
     let tired = k;
     let count = 0;
