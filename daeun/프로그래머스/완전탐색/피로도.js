@@ -18,3 +18,8 @@ function solution(k, dungeons) {
 }
 
 console.log(solution(80, [[80,20],[50,40],[30,10]]));
+
+
+function solution(k, dungeons){
+  
+}

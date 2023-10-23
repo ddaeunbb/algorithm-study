@@ -7,18 +7,14 @@ function solution(n, money, arr){
   let answer = 0;
   let sumArr = arr.map(el => el[0]+ el[1]);
   let sortSum = [...sumArr].sort((a,b)=> a-b);
-
-  console.log(sumArr)
   
   for(let i = 0; i < n; i++){
     let price = money - sortSum[i];
     
     if( price < 0){
       let findIdx = sumArr.indexOf(sortSum[i]);
-      console.log(findIdx)
       let half = (arr[findIdx][0]) / 2;
-      console.log(half)
-      if(price + half < 0) return answer;
+      if(price + half < 0) continue;
       money-= (sortSum[i] + half);
       answer++;
     } else{
@@ -27,6 +23,27 @@ function solution(n, money, arr){
     }
   }
   return answer
+}
+
+// 강사님 답안
+function solution2(m, product){
+  let answer = 0;
+  let n = product.length;
+  product.sort((a,b)=> (a[0]+a[1]) - (b[0] + b[1]));
+
+  for(let i = 0; i < n; i++){
+    let money = m - (product[i][0]/2 + product[i][1]);
+    let cnt = 1;
+    for(let j = 0; j < n; j++){
+      if(j !== i && (product[j][0] +  product[j][1] >  money)) break;
+      if(j !== i && (product[j][0] + product[j][1]) <= money){
+        money -= (product[j][0] + product[j][1]);
+        cnt++;
+      }
+    }
+    answer= Math.max(answer, cnt);
+  }
+  return answer;
 }
 
 

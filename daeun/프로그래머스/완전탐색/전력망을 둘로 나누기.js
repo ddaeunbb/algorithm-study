@@ -11,6 +11,8 @@ function solution(n, wires) {
       tree[b].push(a);
   })
 
+  console.log(tree);
+
   // 아와 같이 배열에 연결된 노드들이 담기게 된다.
   //[ [], [ 3 ], [ 3 ], [ 1, 2, 4 ], [ 3, 5, 6, 7 ], [ 4 ], [ 4 ], [ 4, 8, 9 ],... ]
 
@@ -19,7 +21,7 @@ function solution(n, wires) {
   
   // 만약 1과 3이 매개변수로 들어왔다고 가정했을 때
   function searchTree(root, exceptNum) {
-    let count = 0;
+    let count = 8;
     let visit = [];
     let queue = [root];
     
@@ -29,7 +31,6 @@ function solution(n, wires) {
         let index = queue.pop();
         
         // 하나의 노드에 연결된 모든 노드들을 돌기 시작한다.
-        // 
         tree[index].forEach((element)=>{
             if(element !== exceptNum && visit[element]!==true){
                 visit[element] = true;
