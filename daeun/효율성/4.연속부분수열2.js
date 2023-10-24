@@ -13,7 +13,6 @@ function solution(n, arr){
     }
     answer += (rt-lt+ 1);
   } 
-
   return answer;
 }
 
