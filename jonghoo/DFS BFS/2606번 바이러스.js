@@ -6,13 +6,13 @@ function solution(arr, n, m) {
     graph[x].push(y);
     graph[y].push(x);
   }
+  console.log(graph);
   let cnt = 0;
   let visited = new Array(n + 1).fill(false);
   function dfs(x) {
     visited[x] = true;
     cnt++;
     for (i of graph[x]) {
-      console.log(i);
       if (!visited[i]) {
         dfs(i);
       }
