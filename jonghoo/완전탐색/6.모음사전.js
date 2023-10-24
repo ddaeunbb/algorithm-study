@@ -13,4 +13,6 @@ function solution(word) {
 }
 console.log(solution("EIO"));
 
-console.log(1 + 5 + 5 * 5 + 5 * 5 * 5 + 5 * 5 * 5 * 5);
+//  넘어갈떄 얼마나필요한지를생각해서
+
+//
