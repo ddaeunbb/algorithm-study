@@ -23,14 +23,14 @@ const solution = (s, t) => {
   let tH = new Map();
   let sH = new Map();
 
-  // tH map에 t문자열 사전 정리
+  // tH map에 t문자열 사전 정리 (해쉬 맵 size = 3)
   for (let x of t) {
     if (tH.has(x)) tH.set(x, tH.get(x) + 1);
     else tH.set(x, 1);
   }
 
   // sH map에 s문자열 사전 정리
-  // 이때 t문자열의 길이만큼만 일단 넣어 줌.
+  // 이때 t문자열의 길이만큼만 일단 넣어 줌. (3개씩 넣어가며 비교할 거라서)
   let len = t.length - 1;
   for (let i = 0; i < len; i++) {
     if (sH.has(s[i])) sH.set(s[i], sH.get(s[i]) + 1);
@@ -41,14 +41,20 @@ const solution = (s, t) => {
   let lt = 0;
 
   for (let rt = len; rt < s.length; rt++) {
+    // rt 자리의 str이 해쉬맵에 있으면 value 1 증가 없으면 새로 set
     if (sH.has(s[rt])) sH.set(s[rt], sH.get(s[rt]) + 1);
     else sH.set(s[rt], 1);
 
+    // rt 증가 후 rt 자리의 str을 해쉬맵에 추가하면 비교들어가기.
     if (compareMaps(sH, tH)) answer++;
 
+    // lt 자리 즉 가장 왼쪽 str 1 감소
     sH.set(s[lt], sH.get(s[lt]) - 1);
 
+    // 감소했는데 개수가 0개면 그 키는 존재하지 않는 것. 따라서 쉬운 비교를 위해 삭제해 줌.
     if (sH.get(s[lt]) === 0) sH.delete(s[lt]);
+
+    // 왼쪽 포인터 증가
     lt++;
   }
   return answer;
@@ -56,4 +62,4 @@ const solution = (s, t) => {
 
 let a = "bacaAacba";
 let b = "abc";
-console.log(solution(a, b));
+console.log(solution(a, b)); // 3
