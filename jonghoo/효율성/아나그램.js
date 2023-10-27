@@ -19,12 +19,12 @@ function solution(str1, str2) {
     }
   }
 
-  const mapStr1 = JSON.stringify(Array.from(hashMap1));
-  const mapStr2 = JSON.stringify(Array.from(hashMap2));
+  const arrmap1 = [...hashMap1].sort((a, b) => a[0].localeCompare(b[0]));
+  const arrmap2 = [...hashMap2].sort((a, b) => a[0].localeCompare(b[0]));
 
-  if (mapStr1 === mapStr2) {
+  if (arrmap1.toString() === arrmap2.toString()) {
     return "YES";
-  } else return [hashMap1, hashMap2];
+  } else return "NO";
 }
 
 console.log(solution("AbaAeCe", "baeeACA"));
