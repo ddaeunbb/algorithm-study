@@ -9,13 +9,13 @@ function solution(str1, str2){
     if(sH2.has(alpha)) sH2.set(alpha, sH2.get(alpha) + 1);
     else sH2.set(alpha, 1);
   }
-
+  
   for(let rt = 0; rt < str2.length; rt++) result += str1[rt];
   if(check(result, sH2)) answer++;
   for(let lt = str2.length; lt < str1.length; lt++){
-    // 뽀가른다. 그리고 같다붙인다.
+    // 뽀가른다. 그리고 갖다붙인다.
     // 그다음에 체킹하고 answer 수 구한다.
-    result = result.substring(1);
+    result = result.substring(1); 
     result += str1[lt];
     if(check(result, sH2)) answer++;
   }
