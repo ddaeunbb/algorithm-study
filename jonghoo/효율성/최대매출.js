@@ -2,7 +2,7 @@ function solution(N, K, arr) {
   let pri = N - K;
   let result = [];
 
-  for (let i = 0; i <= pri; i++) {
+  for (let i = 0; i < N; i++) {
     let right = i; // right 변수 초기화
     let sum = 0; // sum 변수 초기화
 
@@ -15,7 +15,7 @@ function solution(N, K, arr) {
     result.push(sum);
   }
 
-  return result;
+  return Math.max(...result);
 }
 
 console.log(solution(10, 3, [12, 15, 11, 20, 25, 10, 20, 19, 13, 15]));

@@ -1,48 +1,25 @@
 function solution(arr) {
-  let a = 0,
-    b = 0,
-    c = 0,
-    d = 0,
-    e = 0;
-
+  let answer = "";
+  let hasMap = new Map();
   for (let i = 0; i < arr.length; i++) {
-    switch (arr[i]) {
-      case "A":
-        a++;
-        break;
-      case "B":
-        b++;
-        break;
-      case "C":
-        c++;
-        break;
-      case "D":
-        d++;
-        break;
-      case "E":
-        e++;
-        break;
+    if (hasMap.has(arr[i])) {
+      hasMap.set(arr[i], hasMap.get(arr[i]) + 1);
+    } else hasMap.set(arr[i], 1);
+  }
+
+  //첫번쨰 방법
+  // let newarr = [...hasMap].sort((a, b) => b[1] - a[1]);
+  // return newarr[0][0];
+
+  //두번쨰 방법
+  let max = 0;
+  for (let element of hasMap.keys()) {
+    if (hasMap.get(element) > max) {
+      max = hasMap.get(element);
+      answer = element;
     }
   }
-
-  // 변수들을 비교하여 최대값을 찾음
-  let maxCount = Math.max(a, b, c, d, e);
-  let maxCase;
-
-  // 최대값을 가진 변수의 `case`를 찾음
-  if (maxCount === a) {
-    maxCase = "A";
-  } else if (maxCount === b) {
-    maxCase = "B";
-  } else if (maxCount === c) {
-    maxCase = "C";
-  } else if (maxCount === d) {
-    maxCase = "D";
-  } else if (maxCount === e) {
-    maxCase = "E";
-  }
-
-  return maxCase;
+  return answer;
 }
 
 let str = "BACBACCACCBDEDE".split("");
