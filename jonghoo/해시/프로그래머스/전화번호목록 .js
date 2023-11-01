@@ -1,16 +1,21 @@
-function solution(phone_book) {
-  phone_book.sort((a, b) => a - b);
-  console.log(phone_book);
+function solution(phoneBook) {
+  const phoneBookHash = {};
 
-  for (let i = 0; i < phone_book.length - 1; i++) {
-    if (
-      phone_book[i] === phone_book[i + 1].substring(0, phone_book[i].length)
-    ) {
-      return false;
+  for (const phoneNumber of phoneBook) {
+    phoneBookHash[phoneNumber] = true;
+  }
+
+  for (const phoneNumber of phoneBook) {
+    for (let i = 1; i < phoneNumber.length; i++) {
+      const prefix = phoneNumber.slice(0, i);
+
+      if (phoneBookHash[prefix]) {
+        return false;
+      }
     }
   }
 
   return true;
 }
 
-solution(["12", "123", "1235", "567", "88"]);
+console.log(solution(["12", "123", "1235", "567", "88"]));
