@@ -4,6 +4,7 @@ function solution(participant, completion) {
   for(let alpha of completion){
       if(nameHash.has(alpha)) nameHash.set(alpha, nameHash.get(alpha)+1);
       else nameHash.set(alpha, 1);
+      // 	["eden", "kiki"]
   }
   
   for(let alpha of participant){
