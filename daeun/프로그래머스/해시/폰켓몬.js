@@ -1,8 +1,7 @@
-function solution(nums) {
+function solution(nums) { // [3,3,3,2,2,4]
   let count = nums.length / 2;
-  const dict = {};
   const answer = [];
-  const copy = [...new Set(nums)];
+  const copy = [...new Set(nums)]; //[ 3, 2 ,4]
   
   for(let i = 0; i < copy.length; i++){
       if(count === 0) break;
