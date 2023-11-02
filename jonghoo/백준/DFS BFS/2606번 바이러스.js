@@ -1,21 +1,19 @@
-function solution(arr, n, m) {
+function solution(N, arr) {
   let graph = [];
-  for (let i = 1; i <= n; i++) graph[i] = [];
-  for (let i = 0; i < m; i++) {
+  for (let i = 1; i <= N; i++) graph[i] = [];
+  for (let i = 0; i < arr.length; i++) {
     let [x, y] = arr[i].map(Number);
     graph[x].push(y);
     graph[y].push(x);
   }
-  console.log(graph);
   let cnt = 0;
-  let visited = new Array(n + 1).fill(false);
+  let visited = new Array(N + 1).fill(false);
+  console.log(visited);
   function dfs(x) {
     visited[x] = true;
     cnt++;
-    for (i of graph[x]) {
-      if (!visited[i]) {
-        dfs(i);
-      }
+    for (y of graph[x]) {
+      if (!visited[y]) dfs(y);
     }
   }
   dfs(1);
@@ -23,16 +21,12 @@ function solution(arr, n, m) {
 }
 
 console.log(
-  solution(
-    [
-      [1, 2],
-      [2, 3],
-      [1, 5],
-      [5, 2],
-      [5, 6],
-      [4, 7],
-    ],
-    7,
-    6
-  )
+  solution(7, [
+    [1, 2],
+    [2, 3],
+    [1, 5],
+    [5, 2],
+    [5, 6],
+    [4, 7],
+  ])
 );
