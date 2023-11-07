@@ -2,8 +2,8 @@ function solution(n, k){
   const arr = Array(n).fill(1).map((el,idx)=> el+idx);
   let check = 0;
   let idx = -1;
-  while(arr.length !==1){
-    check += 1;
+  while(arr.length !== 1){
+    check += 1; 
     idx += 1;
     if(idx >= arr.length) idx = 0;
     if(check === k){
