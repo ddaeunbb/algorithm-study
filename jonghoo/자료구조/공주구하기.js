@@ -1,14 +1,14 @@
 function solution(N, K) {
-  let array = [];
+  let arr = [];
   for (let i = 1; i <= N; i++) {
-    array.push(i);
+    arr.push(i);
   }
-  while (array.length > 1) {
-    for (let i = 1; i < K; i++) array.push(array.shift());
-    array.shift();
-    if (array.length == 1) {
-      return array.shift();
+  while (arr.length) {
+    for (let i = 0; i < K - 1; i++) {
+      arr.push(arr.shift());
     }
+    arr.shift();
+    if (arr.length === 1) return arr.shift();
   }
 }
 
