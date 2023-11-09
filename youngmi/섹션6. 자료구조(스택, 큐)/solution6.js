@@ -17,23 +17,17 @@
 N과 K가 주어질 때 공주를 구하러 갈 왕자의 번호를 출력하는 프로그램을 작성하시오.
  */
 const solution = (n, k) => {
-  let princes = Array(8)
-    .fill()
-    .map((v, i) => {
-      return i + 1;
-    });
+  let answer = 0;
+  let queue = Array.from({ length: n }, (v, i) => i + 1);
 
-  let notMe = [];
-
-  for (let i = 2; i < 3 * n; i += 3) {
-    console.log(princes[i]);
-    princes.pop();
-    console.log(princes);
-    if (princes.length === 1) break;
+  while (queue.length) {
+    for (let i = 1; i < k; i++) {
+      queue.push(queue.shift());
+      queue.shift();
+      if (queue.length === 1) answer = queue.shift();
+      console.log(queue);
+    }
   }
-
-  return princes[0];
-
   // reference
   /*
   let answer;
