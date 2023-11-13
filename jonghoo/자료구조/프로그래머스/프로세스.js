@@ -19,4 +19,4 @@ function solution(priorities, location) {
   return answer;
 }
 
-console.log(solution([2, 1, 3, 2], 1));
+console.log(solution([2, 1, 3, 2], 2));
