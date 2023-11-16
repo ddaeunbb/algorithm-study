@@ -1,18 +1,14 @@
 function solution(prices) {
-  let answer = [];
-  const n = prices.length;
-
-  for (let i = 0; i < n; i++) {
-    let count = 0;
-
-    for (let j = i + 1; j < n; j++) {
-      if (prices[i] <= prices[j]) count++;
+  const answer = [];
+  for (let i = 0; i < prices.length; i++) {
+    let stack = 0;
+    for (let j = i + 1; j < prices.length; j++) {
+      stack++;
+      if (prices[i] > prices[j]) {
+        break;
+      }
     }
-
-    answer.push(count);
+    answer.push(stack);
   }
-
   return answer;
 }
-
-console.log(solution([1, 2, 3, 2, 3]));
