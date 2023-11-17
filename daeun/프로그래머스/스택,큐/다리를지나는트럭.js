@@ -7,14 +7,14 @@ function solution(bridge_length, weight, truck_weights) {
   answer++;
   sum += truck_weights[0];
   bridge.shift();
-  bridge.push(truck_weights.shift());
+  bridge.push(truck_weights.shift()); 
   
   while(sum > 0){
     // 초 부터 더해주고
     answer++;
     sum -= bridge.shift();
     if(bridge.length < bridge_length && sum + truck_weights[0] <= weight){
-      sum += truck_weights[0];
+      sum += truck_weights[0]; 
       bridge.push(truck_weights.shift())
     } else bridge.push(0);
   }
