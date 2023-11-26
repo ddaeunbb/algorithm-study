@@ -94,7 +94,7 @@ const solution = (n, lost, reserve) => {
     }
   });
   return answer;
-  /*
+  */
 };
 
 let n = 5;
