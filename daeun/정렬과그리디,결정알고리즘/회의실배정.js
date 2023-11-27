@@ -9,6 +9,7 @@ function solution(arr) {
     if(a[1] === b[1]) return a[0] - b[0];
     else return a[1] - b[1];
   })
+  console.log(arr)
   let start = 0;
   for(let i = 0; i < arr.length; i++){
     const [a,b] = arr[i];

@@ -10,7 +10,6 @@ function solution(arr) {
       else hash.set(i, 1);
     }
   })
-
   return Math.max(...hash.values());
 }
 
