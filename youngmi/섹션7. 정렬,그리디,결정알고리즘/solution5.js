@@ -25,6 +25,7 @@ const solution = (size, arr) => {
       cache = [arr[i], ...cache]; // 새 요소 맨 앞에 삽입
     }
   }
+  return cache;
 
   //reference
   /*

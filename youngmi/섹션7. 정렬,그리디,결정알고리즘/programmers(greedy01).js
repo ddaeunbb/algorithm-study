@@ -16,9 +16,91 @@
 - 여벌 체육복이 있는 학생만 다른 학생에게 체육복을 빌려줄 수 있습니다.
 - 여벌 체육복을 가져온 학생이 체육복을 도난당했을 수 있습니다. 이때 이 학생은 체육복을 하나만 도난당했다고 가정하며, 남은 체육복이 하나이기에 다른 학생에게는 체육복을 빌려줄 수 없습니다. */
 
-const solution = (n, lost, reserve) => {};
+const solution = (n, lost, reserve) => {
+  let answer = n - lost.length;
+  console.log("참여가능: ", answer);
+
+  lost.sort((a, b) => a - b);
+  reserve.sort((a, b) => a - b);
+
+  for (let student of reserve) {
+    if (lost.includes(student)) {
+      console.log("가진애가 잃어버림");
+      lost = lost.filter((item) => item != student);
+      reserve = reserve.filter((item) => item != student);
+      answer++;
+    }
+  }
+
+  console.log(lost, reserve);
+
+  while (reserve.length && lost.length) {
+    if (reserve[0] !== lost[0]) {
+      console.log("lost", lost[0], "한테 ", reserve[0], "이 빌려줌");
+      if (reserve[0] === lost[0] + 1 || reserve[0] === lost[0] - 1) {
+        lost.shift();
+        reserve.shift();
+        answer++;
+      } else {
+        reserve.shift();
+      }
+      console.log(
+        "현재 참여 가능 인원: ",
+        answer,
+        "현재 lost & reserve",
+        lost,
+        reserve
+      );
+    } else if (reserve[0] === lost[0]) {
+      console.log("나도 여벌 이제 없음", lost[0]);
+      lost.shift();
+      reserve.shift();
+      answer++;
+      console.log(
+        "현재 참여 가능 인원: ",
+        answer,
+        "현재 lost & reserve",
+        lost,
+        reserve
+      );
+    }
+  }
+  return answer;
+
+  // reference
+  /*
+  var answer = n - lost.length;
+  // 처음 가능한 학생수 = n - lost.length
+  // lost 배열 앞뒤의 값을 reserve에 포함되어있는지를 확인 -> 해당값을 reserve에서 뺌 + answer++
+  // 왜 정렬을 해줘야 하지? - [4,2], [3,5]와 같은 케이스 때문
+
+  let realLost = lost.filter((l) => !reserve.includes(l));
+  let realReserve = reserve.filter((r) => !lost.includes(r));
+  answer += lost.length - realLost.length;
+
+  realLost.sort((a, b) => a - b);
+
+  realLost.forEach((l) => {
+    if (realReserve.length === 0) {
+      return;
+    }
+
+    if (realReserve.includes(l - 1)) {
+      realReserve = realReserve.filter((r) => r !== l - 1);
+      answer++;
+    } else if (realReserve.includes(l + 1)) {
+      realReserve = realReserve.filter((r) => r !== l + 1);
+      answer++;
+    }
+  });
+  return answer;
+  */
+};
 
 let n = 5;
 let lost = [2, 4];
 let reserve = [1, 3, 5];
-console.log(solution(n, lost, reserve));
+console.log(solution(n, lost, reserve)); // 5
+console.log(solution(5, [4, 5], [3, 4])); // 4
+console.log(solution(5, [3, 4], [4, 3])); // 5
+console.log(solution(2, [1, 2], [1, 2])); // 2
