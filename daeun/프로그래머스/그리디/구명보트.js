@@ -1,6 +1,7 @@
 function solution(people, limit) {
   var answer = 0;
   people.sort((a,b)=> a-b);
+  
   while(people.length > 0){
       let last = people.pop();
       if(people[0] + last <= limit) people.shift();
@@ -11,11 +12,14 @@ function solution(people, limit) {
 
 
 function solution(people, limit) {
-  var answer =0;
-  people.sort ((a,b) => b-a)  
+  var answer = 0;
+  people.sort ((a,b) => b-a);
   for (var i=0, j= people.length - 1; i <=j ; i++ ) {
       if (people[i] + people [j] <= limit ) j--;
       answer ++
   }
   return answer;
 }
+
+solution([70, 50, 80, 50], 100) // 3
+solution([70, 80, 50], 100) // 3

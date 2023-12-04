@@ -1,6 +1,5 @@
 function solution(number, k){
   const arr = [];
-
   for(let num of number){
     while(arr.length > 0 && k > 0 && arr[arr.length-1] < num ){
       arr.pop();
