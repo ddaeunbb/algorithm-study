@@ -71,24 +71,33 @@ const solution = (n, lost, reserve) => {
   /*
   var answer = n - lost.length;
   // 처음 가능한 학생수 = n - lost.length
-  // lost 배열 앞뒤의 값을 reserve에 포함되어있는지를 확인 -> 해당값을 reserve에서 뺌 + answer++
-  // 왜 정렬을 해줘야 하지? - [4,2], [3,5]와 같은 케이스 때문
+  // 정렬해 주는 이유는 n=5, [4,2], [3,5]와 같은 케이스 때문
+  // -> 바른 return 값은 5인데 정렬하지 않으면 순서대로 배열을 순회하게되어서 4번학생은 3번에게 빌려주게 되고, 
+  //    2번학생은 결국 여분 체육복을 받지 못해서 체육수업에 참여할 수 없기 때문에 총 가능한 학생수가 4명이 된다.
 
+  // 1. lost, reserve 배열에서 같은 학생이 포함되어있으면 그 학생을 lost, reserve 배열에서 제외하고 시작한다. + answer++
   let realLost = lost.filter((l) => !reserve.includes(l));
   let realReserve = reserve.filter((r) => !lost.includes(r));
   answer += lost.length - realLost.length;
 
+  // 2. 찐 잃어버린 리스트를 정렬해준다. 
   realLost.sort((a, b) => a - b);
 
+  // 3. 찐 잃어버린 리스트 하나씩 돌면서 확인
   realLost.forEach((l) => {
     if (realReserve.length === 0) {
+      // 빌려줄 애 없으면 return해서 끝냄 
       return;
     }
 
     if (realReserve.includes(l - 1)) {
+      // 앞 번호 애가 여분 체육복 있으면 
+      // 빌려주게 하고(즉, answer++ 하고) 여분 체육복 가진 학생 리스트에서 지워주기 
       realReserve = realReserve.filter((r) => r !== l - 1);
       answer++;
     } else if (realReserve.includes(l + 1)) {
+      // 뒷 번호 애가 여분 체육복 있으면 
+      // 빌려주게 하고(즉, answer++ 하고) 여분 체육복 가진 학생 리스트에서 지워주기 
       realReserve = realReserve.filter((r) => r !== l + 1);
       answer++;
     }
