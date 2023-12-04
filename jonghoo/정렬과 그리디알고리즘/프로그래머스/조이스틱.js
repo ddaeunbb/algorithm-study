@@ -31,4 +31,4 @@ function solution(name) {
   return answer + minMove;
 }
 
-console.log(solution("JAN"));
+console.log(solution("JEROEN"));
