@@ -1,7 +1,6 @@
 function solution(n, lost, reserve){
   // 모든 학생들이 수 체육복을 가졌을 때
   const clothes = Array(n).fill(1);
-
   // 체육복 잃어버린 애들 0개로 만들기
   lost.forEach(el => clothes[el -1] = 0);
 
@@ -19,7 +18,7 @@ function solution(n, lost, reserve){
       else if (clothes[i] === 0 && clothes[i+1] === 2){
           clothes[i] = 1;
           clothes[i+1] = 1;
-      }
+      } 
   }
   return clothes.filter(el => el > 0).length;
 }
@@ -43,3 +42,5 @@ function solution(n, lost, reserve) {
   })
   return answer
 }
+
+solution(5, [2,4], [1, 3, 5])
