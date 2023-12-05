@@ -1,24 +1,21 @@
 function solution(n, lost, reserve) {
   let answer = n - lost.length;
+  reserve.sort((a, b) => a - b);
+  lost.sort((a, b) => a - b);
 
-  let realLost = lost.filter((l) => !reserve.includes(l));
-  let realReserve = reserve.filter((r) => !lost.includes(r));
-  answer += lost.length - realLost.length;
 
-  realLost.sort((a, b) => a - b);
 
-  realLost.forEach((l) => {
-    if (realReserve.length === 0) {
-      return;
+  for (let i = 0; i < lost.length; i++) {
+    for (let j = 0; j < reserve.length; j++) {
+      if (Math.abs(lost[i] - reserve[j]) <= 1) {
+        answer++;
+        reserve.splice(j, 1); 
+        break;
+      }
     }
+  }
 
-    if (realReserve.includes(l - 1)) {
-      realReserve = realReserve.filter((r) => r !== l - 1);
-      answer++;
-    } else if (realReserve.includes(l + 1)) {
-      realReserve = realReserve.filter((r) => r !== l + 1);
-      answer++;
-    }
-  });
   return answer;
 }
+
+console.log(solution(5,[2,4],[1,3,5]));

@@ -21,27 +21,49 @@ ex) 완성해야 하는 이름이 세 글자면 AAA, 네 글자면 AAAA
 
 const solution = (name) => {
   //reference
-  /*
   let answer = 0;
   let min_move = name.length - 1;
+  console.log(min_move);
 
   [...name].map((n, i) => {
+    // name을 배열로 만들어서 map으로 순회하며 하나씩 처리
+    // A에서 특정 문자로 가는 최소 거리 움직여야 하는 거리 책정(왼쪽과 오른쪽 중 더 min한 걸로)
+    // 65는 A의 아스키코드, 91은 z의 아스키코드 90 + A -> Z 로가는 1회
+    // 그리고 answer에 더해 줌
+    console.log(n);
+
     answer += Math.min(n.charCodeAt() - 65, 91 - n.charCodeAt());
     let idx = i + 1;
+    console.log(n.charCodeAt() - 65, 91 - n.charCodeAt(), "answer", answer);
+    console.log("while전 idx", idx);
 
     // 연속되는 A의 개수 count
+    // 지금 확인하는 n이 끝 문자가 아니고, A일때 while문 들어간다.
     while (idx < name.length && name[idx] === "A") {
       idx++;
+      console.log("while문 들어옴", idx);
     }
 
-    min_move = Math.min(
+    console.log(
+      "정방향 전진: ",
       min_move,
+      "뒤로 돌아가기: ",
       i * 2 + name.length - idx,
+      "뒤의 요소 먼저 입력: ",
       i + 2 * (name.length - idx)
     );
+    min_move = Math.min(
+      // 정 방향으로 전진
+      min_move,
+      // 뒤로 돌아가기
+      i * 2 + name.length - idx,
+      // 뒤의 요소를 먼저 입력하기
+      i + 2 * (name.length - idx)
+    );
+    console.log(min_move, "채택");
   });
 
   return answer + min_move;
-  */
 };
 console.log(solution("JEROEN")); //	56
+console.log(solution("JAN")); // 23
