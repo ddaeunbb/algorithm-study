@@ -19,6 +19,7 @@ function solution(name) {
   return answer + min_move;
 }
 
+
 console.log(solution('JEROEN')) // 56
 console.log(solution('JAZ')) // 11
 console.log(solution('JAN')) // 23

@@ -6,8 +6,10 @@ function solution(n, costs) {
   for(let i = 0; i < n; i++){
       hash.set(i, 0);
   }
-  
+  [1,2,3,4,5]
+
   costs.sort((a,b)=> a[2] - b[2]);
+
   for(let j = 0; j < costs.length; j++){
       const [a,b,c] = costs[j];
       const bridgeA = hash.get(a);
@@ -27,6 +29,7 @@ function solution(n, costs) {
       }
       if(check) return answer;
   }
+  console.log(hash);
   return answer
 }
 
