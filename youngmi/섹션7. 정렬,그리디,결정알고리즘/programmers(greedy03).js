@@ -34,3 +34,4 @@ const solution = (number, k) => {
 let number = "4177252841";
 let k = 4;
 console.log(solution(number, k)); // 775841
+console.log(solution("7777", 2)); // 775841
