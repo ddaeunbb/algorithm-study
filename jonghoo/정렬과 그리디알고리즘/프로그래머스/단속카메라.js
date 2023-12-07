@@ -57,3 +57,5 @@ function solution(routes) {
     
     return answer;
   }
+
+  console.log(solution());
