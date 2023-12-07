@@ -1,16 +1,15 @@
 // 처음 푼 풀이 (3문제만 정답)
 function solution(n, times) {
+    // n = 6, times =[7, 10]
   const arr = [];
   for(let i = 1; i <= n; i++){
       times.forEach(el => arr.push(el * i));
-      arr.sort((a,b)=> a-b);
   }
-  arr.sort((a,b)=> a-b);
+  arr.sort((a,b)=> a-b); // [7, 10, 20, 21, 60]
   return arr[n-1]
 }
 
 function solution(n, times) {
-    
   // times 배열을 오름차순으로 정렬
   // (a - b) 가 0 보다 크면 순서 변경
   // 적절한 min , max 타임을 정의하기 위해 심사관을 걸리는 시간별로 소팅함.
