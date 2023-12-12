@@ -5,19 +5,19 @@ function solution(distance, rocks, n) {
   // 각 바위 간의 거리 구하기
   rocks.unshift(1);
   rocks.push(distance);
-  const rockDist = [];
+  const rockDist = [2,9,3,3,4,4];
   rocks.forEach((rock, i) => {
       if(i !== rocks.length - 1) rockDist.push(Math.abs(rocks[i+1] - rock))
   })
 
   // 최솟값 돌면서 제거하기
   while(n > 0){
-      const min = Math.min(...rockDist);
+      const min = Math.min(...rockDist); // 2
       const idx = rockDist.indexOf(min);
       let remove = rockDist.splice(idx, 1);
       
       if(idx !== (rockDist.length-1)){
-          rockDist[idx+1] += remove[0];
+        rockDist[idx+1] += remove[0];
       } else rockDist[idx-1] += remove[0];
       n--;
   }

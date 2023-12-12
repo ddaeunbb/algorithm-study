@@ -1,6 +1,7 @@
 function solution(routes) {
   let answer = 0;
   routes.sort((a,b)=> a[1] - b[1])
+  console.log(routes);
   
   for(let i = 0; i < routes.length; i++){
       const fcar = routes[i];
