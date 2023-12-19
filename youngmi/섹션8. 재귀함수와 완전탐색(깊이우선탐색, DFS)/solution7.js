@@ -13,11 +13,14 @@ const solution = (m, ps, pt) => {
   let answer = 0;
 
   const dfs = (v, sum, time) => {
+    // 제한 시간 넘어가면 dfs 탈출
     if (time > m) return;
 
     if (v === ps.length) {
+      // 만약 문제 다 봤으면 max 담기
       answer = Math.max(answer, sum);
     } else {
+      // 다음 문제 푸는 경우, 안 푸는 경우로 dfs 실행
       dfs(v + 1, sum + ps[v], time + pt[v]);
       dfs(v + 1, sum, time);
     }
