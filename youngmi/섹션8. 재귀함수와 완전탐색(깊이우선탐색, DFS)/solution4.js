@@ -7,24 +7,33 @@
 첫 번째 줄부터 각 줄에 하나씩 부분집합을 아래와 출력예제와 같은 순서로 출력한다.
 단 공집합은 출력하지 않습니다. */
 
+// 부분집합 공식: 공집합까지 합치면 2의 n제곱
+
 const solution = (n) => {
   let answer = [];
+  // 해당 요소를 부분집합 요소로 채택할지 안할지 기록하는 체크배열
   let ch = Array.from({ length: n + 1 }, () => 0);
-  function DFS(L) {
-    if (L === n + 1) {
+
+  function dfs(v) {
+    if (v === n + 1) {
+      // 배열 길이만큼 다 봤으면
       let tmp = "";
       for (let i = 1; i <= n; i++) {
+        // 1부터 배열 길이만큼 돌면서 부분집합 기록하기
+        // 체크배열에 i 요소가 true일 경우 부분집합(tmp)으로 기입
         if (ch[i] === 1) tmp += i + " ";
       }
+      // 공집합 제외한 부분집합 출력. trim()은 맨 뒤 뛰어쓰기 없애기 위해
       if (tmp.length > 0) answer.push(tmp.trim());
     } else {
-      ch[L] = 1;
-      DFS(L + 1);
-      ch[L] = 0;
-      DFS(L + 1);
+      // 다 확인 안했으면 이번 요소를 부분집합으로 선택하는 경우와 안하는 경우로 dfs 돌리기
+      ch[v] = 1;
+      dfs(v + 1);
+      ch[v] = 0;
+      dfs(v + 1);
     }
   }
-  DFS(1);
+  dfs(1);
   return answer;
 };
 
