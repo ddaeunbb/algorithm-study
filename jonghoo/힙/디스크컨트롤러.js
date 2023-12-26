@@ -1,13 +1,24 @@
 function solution(jobs) {
-  var answer = 0;
+  let answer = 0;
+  let j = 0;
+  let time = 0;
   jobs.sort(function (a, b) {
-    return a[1] - a[0] - (b[1] - b[0]);
+    return a[0] - b[0];
   });
-  let end = 0;
-  for (let i = 0; i < jobs.length; i++) {
-    answer += end - jobs[i][0];
-    answer += jobs[i][1];
-    end += jobs[i][1];
+  const priorityQueue = [];
+  while (j < jobs.length || priorityQueue.length !== 0) {
+    if (jobs.length > j && time >= jobs[j][0]) {
+      priorityQueue.push(jobs[j++]);
+      priorityQueue.sort((a, b) => a[1] - b[1]);
+      continue;
+    }
+    if (priorityQueue.length !== 0) {
+      time += priorityQueue[0][1];
+      answer += time - priorityQueue[0][0];
+      priorityQueue.shift();
+    } else {
+      time = jobs[j][0];
+    }
   }
-  return answer / jobs.length;
+  return parseInt(answer / jobs.length);
 }
