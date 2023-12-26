@@ -14,7 +14,6 @@ const solution = (n, m) => {
     if (v === m) {
       // 탈출 조건을 m 으로 둠 ... !
       answer.push(tmp.slice());
-      console.log("마지막에 넣는다", tmp);
     } else {
       for (let i = 1; i <= n; i++) {
         tmp[v] = i;
