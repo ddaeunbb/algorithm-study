@@ -1,30 +1,23 @@
 function solution(n, arr) {
   let answer = 0;
-  let graph = Array.from(Array(n + 1), () => Array(n + 1).fill(0));
-  let ch = Array.from({ length: n + 1 }, () => 0);
-  path = [];
-  for (let [a, b] of arr) {
-    graph[a][b] = 1;
+  let array = Array.from({ length: n + 1 }, () => []);
+  let check = Array.from({ length: n + 1 }, () => 0);
+  for (let i = 0; i < arr.length; i++) {
+    array[arr[i][0]].push(arr[i][1]);
   }
-  function DFS(v) {
-    if (v === n) {
-      answer++;
-      console.log(path);
-    } else {
+  function DFS(L) {
+    if (L == n) answer++;
+    else {
+      check[1] = 1;
       for (let i = 1; i <= n; i++) {
-        if (graph[v][i] === 1 && ch[i] === 0) {
-          ch[i] = 1;
-          path.push(i);
+        if (array[L].includes(i) && check[i] == 0) {
+          check[i] = 1;
           DFS(i);
-          ch[i] = 0;
-          path.pop();
+          check[i] = 0;
         }
       }
     }
   }
-
-  path.push(1);
-  ch[1] = 1;
   DFS(1);
   return answer;
 }
