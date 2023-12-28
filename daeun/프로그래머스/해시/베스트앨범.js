@@ -80,4 +80,38 @@ function solution(genres, plays){
 }
 
 
+function solution(genres, plays){
+  let answer = [];
+  const genH = new Map();
+  const playH = new Map();
+
+  genres.forEach((gen, idx)=> {
+    if(genH.has(gen)) genH.set(gen, genH.get(gen) + plays[idx]);
+    else genH.set(gen, plays[idx]);
+
+    if(playH.has(gen)) playH.get(gen).push([idx, plays[idx]]);
+    else playH.set(gen, [[idx, plays[idx]]]);
+  })
+
+  const genArr = [...genH].sort(([,a],[,b])=> b-a)
+  playH.forEach(el => {
+    el.sort((a,b) => {
+      if(a[1] === b[1]) return a[0] - b[0];
+      else return b[1] - a[1];
+    })
+  })
+  
+  genArr.forEach(([gen,]) => {
+    const arr = playH.get(gen);
+    let count = 0;
+    while(count < 2 && arr.length > 0) {
+      const track = arr.shift();
+      answer.push(track[0]);
+      count++;
+    }
+  })
+  return answer;
+}
+
+
 solution(["classic", "pop", "classic", "classic", "pop"], [500, 600, 150, 800, 2500]);
