@@ -1,31 +1,25 @@
 function solution(n, vertex) {
-  let graph = Array.from({ length: n + 1 }, () => Array.from({ length: n + 1 }, () => 0));
-  let check = Array.from({ length: n + 1 }, () => 0);
-  for (let [a, b] of vertex) {
-    graph[a][b] = 1;
-    graph[b][a] = 1;
+  let graph = Array.from({ length: n + 1 }, () => []);
+  for (const [a, b] of vertex) {
+    graph[a].push(b);
+    graph[b].push(a);
   }
-  let answer = [];
-  for (let i = 1; i <= n; i++) {
-    let queue = [];
-    let route = 0;
-    check[1] = 1;
-    queue.push(1);
-    if (check[i] == 1) {
-      answer.push(route);
-    } else {
-      while (queue.length) {
-        let v = queue.shift();
-        check[v] = 1;
-        for (let i = 0; i < n + 1; i++) {
-          if (graph[v][i] == 1) {
-            queue.push(i);
-          }
-        }
+  const distance = Array(n + 1).fill(0);
+  distance[1] = true;
+  let queue = [];
+  queue.push(1);
+  while (queue.length) {
+    let x = queue.shift();
+    for (let node of graph[x]) {
+      if (!distance[node]) {
+        distance[node] = distance[x] + 1;
+        queue.push(node);
       }
     }
   }
-  return answer;
+  const max = Math.max(...distance);
+  console.log(distance);
+  return distance.filter((e) => e == max).length;
 }
 
 console.log(
