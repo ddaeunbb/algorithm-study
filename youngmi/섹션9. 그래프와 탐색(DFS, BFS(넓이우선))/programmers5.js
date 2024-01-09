@@ -14,6 +14,35 @@
 - i번 컴퓨터와 j번 컴퓨터가 연결되어 있으면 computers[i][j]를 1로 표현합니다.
 - computer[i][i]는 항상 1입니다. */
 
-const solution = () => {};
+const solution = (n, computers) => {
+  let answer = 0;
+  const visited = [];
 
-console.log(solution());
+  const dfs = (node, visited, computers) => {
+    visited[node] = true; // 현재 node를 방문처리 하고
+
+    for (let i = 0; i < computers.length; i++) {
+      if (computers[node][i] === 1 && !visited[i])
+        // 연결된 노드가 있고 해당 노드를 방문하지 않았다면
+        dfs(i, visited, computers); // dfs로 방문 진행
+    }
+  };
+
+  for (let i = 0; i < n; i++) {
+    // 방문하지 않았다면 dfs 실행
+    if (!visited[i]) {
+      dfs(i, visited, computers);
+      answer++;
+    }
+  }
+
+  return answer;
+};
+
+console.log(
+  solution(3, [
+    [1, 1, 0],
+    [1, 1, 0],
+    [0, 0, 1],
+  ])
+); // 2
