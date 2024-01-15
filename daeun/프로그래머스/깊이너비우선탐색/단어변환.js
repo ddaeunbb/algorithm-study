@@ -15,7 +15,6 @@ function solution(begin, target, words) {
   let visited = [];
 
   function DFS(nextWord, count) {
-    console.log(nextWord, count)
     if(nextWord === target) answer = Math.min(answer, count);
     else {
       for(let i = 0; i < words.length; i++){
