@@ -1,10 +1,10 @@
 function solution(arr) {
   let n = arr.length;
-  let memo = Array.from({ length: n }, () => -1); // 메모이제이션을 위한 배열
+  let memo = Array.from({ length: n }, () => 0); // 메모이제이션을 위한 배열
   let temp = [];
 
   function DFS(L) {
-    if (memo[L] !== -1) {
+    if (memo[L] !== 0) {
       return memo[L];
     }
 
@@ -28,3 +28,23 @@ function solution(arr) {
 
 console.log(solution([2, 7, 5, 8, 6, 4, 7, 12, 3]));
 console.log(solution([5, 3, 7, 8, 6, 2, 9, 4]));
+
+// 강의 솔루션
+
+function solution2(arr) {
+  let answer = 0;
+  let n = arr.length;
+  let dy = Array.from({ length: n }, () => 0);
+  dy[0] = 1;
+  for (let i = 1; i < n; i++) {
+    let max = 0;
+    for (let j = i - 1; j >= 0; j--) {
+      if (arr[j] < arr[i] && dy[j] > max) {
+        max = dy[j];
+      }
+    }
+    dy[i] = max + 1;
+    answer = Math.max(answer, dy[i]);
+  }
+  return answer;
+}
