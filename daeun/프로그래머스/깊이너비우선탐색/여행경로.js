@@ -1,39 +1,39 @@
 // 런타임 에러
-// function solution(tickets) {
-//   const answer = ['ICN'];
-//   const ticketsH = new Map();
-//   const visited = new Map();
+function solution(tickets) {
+  const answer = ['ICN'];
+  const ticketsH = new Map(); // ICN { ATL, SFO} 
+  const visited = new Map();
 
-//   const len = tickets.length;
-//   tickets.sort(); // 티켓 이름별로 정리
+  const len = tickets.length;
+  tickets.sort(); // 티켓 이름별로 정리
 
-//   tickets.forEach(([a,b])=> {
-//     if(ticketsH.has(a)) {
-//       const arr = ticketsH.get(a);
-//       arr.push(b);
-//     }
-//     else ticketsH.set(a,[b]);
-//   })
+  tickets.forEach(([a,b])=> {
+    if(ticketsH.has(a)) {
+      const arr = ticketsH.get(a);
+      arr.push(b);
+    }
+    else ticketsH.set(a,[b]);
+  })
 
-//   function DFS(land, count){
-//     if(count === len) return;
-//     else {
-//       const connect = ticketsH.get(land);
-//       for(let i = 0; i < connect.length; i++){
-//         if(!visited.get(`${land}-${connect[i]}`)) {
-//           visited.set(`${land}-${connect[i]}`, true);
-//           answer.push(connect[i]);
-//           DFS(connect[i], count + 1);
-//           break;
-//         }
-//       }
-//     }
-//   }
+  function DFS(land, count){
+    if(count === len) return;
+    else {
+      const connect = ticketsH.get(land); // []
+      for(let i = 0; i < connect.length; i++){
+        if(!visited.get(`${land}-${connect[i]}`)) {
+          visited.set(`${land}-${connect[i]}`, true);
+          answer.push(connect[i]);
+          DFS(connect[i], count + 1);
+          break;
+        }
+      }
+    }
+  }
 
-//   DFS('ICN', 0);
+  DFS('ICN', 0);
 
-//   return answer
-// }
+  return answer
+}
 
 function solution(tickets) {
   let answer = [];
