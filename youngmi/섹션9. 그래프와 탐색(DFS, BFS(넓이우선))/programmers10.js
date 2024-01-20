@@ -42,6 +42,7 @@ function bfs(start, table, k) {
       let ny = cy + dy[i];
 
       if (nx < 0 || ny < 0 || nx >= table.length || ny >= table.length)
+        // 좌표가 0보다 작거나 테이블 크기보다 크면 패스
         continue;
       else if (table[nx][ny] === k) continue;
       else {

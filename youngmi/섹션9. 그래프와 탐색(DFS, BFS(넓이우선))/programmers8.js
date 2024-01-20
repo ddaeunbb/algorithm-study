@@ -49,7 +49,7 @@ const solution = (rectangle, characterX, characterY, itemX, itemY) => {
     // 9) 현재 위치가 도착 위치에 도달하면 리턴한다.
     if (x === itemX && y === itemY) return cnt / 2;
 
-    // 10) 도착하지 않았다면 움직일 수 있는( 1인 경우 ) 좌표 값가 횟수를 큐에 담는다.
+    // 10) 도착하지 않았다면 움직일 수 있는( 1인 경우 ) 좌표 값, 횟수를 큐에 담는다.
     for (let i = 0; i < 4; i++) {
       let chX = x + moveX[i];
       let chY = y + moveY[i];
