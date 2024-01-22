@@ -1,15 +1,19 @@
-function solution(m, coin) {
-  let answer = 0;
-  let dy = Array.from({ length: m + 1 }, () => 1000);
-  dy[0] = 0;
-  for (let i = 1; i < arr.length; i++) {
-    for (let j = coin[i]; j <= m; j++) {
-      dy[j] = Math.min(dy[j], dy[j - coin[i]] + 1);
-    }
+function solution(arr, n) {
+  let check = Array.from({ length: n + 1 }, () => 0);
+  for (let x of arr) {
+    check[x] = 1;
   }
-  answer = dy[m];
-  return answer;
+  for (let i = 1; i <= n; i++) {
+    let min = Number.MAX_VALUE;
+    if (check[i] !== 0) continue;
+    for (let x of arr) {
+      if (i - x > 0) {
+        min = Math.min(min, check[i - x] + 1);
+      }
+    }
+    check[i] = min;
+  }
+  return check[n];
 }
 
-let arr = [1, 2, 5];
-console.log(solution(15, arr));
+console.log(solution([1, 2, 5], 15));
