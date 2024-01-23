@@ -30,6 +30,7 @@ function solution(N, number) {
       }
       return -1;
   }
+  return answer;
 }
 
 
